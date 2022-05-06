@@ -1,8 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ReactSession } from 'react-client-session';
 
 const About = () => { return (alert("Version: 1.0")); }
-//need conditional logic for how user is logged in, showing conditional LOGIN or LOGOUT depending. Perhaps change to class component and track in context state?
+
+const Logout = () => { 
+    ReactSession.remove("email");
+    ReactSession.remove("id");
+    ReactSession.remove("first_name");
+    this.forceUpdate();
+}
+
+const LoggedIn = () => (
+    <>
+        <li className="nav-item">
+            <Link className="nav-link" to="/create/household">New</Link>
+        </li>
+        <li className="nav-item">
+            <Link className="nav-link" to="/list/households">Households</Link>
+        </li>
+        <Link className="nav-link" role="button" onClick={Logout} to={{ pathname: "/" }}>Logout</Link>
+    </>);
+
+const NotLoggedIn = () => (
+    <>
+        <li className="nav-item">
+            <Link className="nav-link" to="/login">Login</Link>
+        </li>
+        <li className="nav-item">
+            <Link className="nav-link" to="/register">Register</Link>
+        </li>
+    </>);
+
 const NavBar = () => {
     return (
         <div>
@@ -22,12 +51,7 @@ const NavBar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to={{ pathname: "https://www.gcu.edu/" }} target="_blank">GCU Homepage</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/create/household">New</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/list/households">Households</Link>
-                            </li>
+                            {ReactSession.get("email")==null ? NotLoggedIn() : LoggedIn() }
                         </ul>
                         <span className="navbar-text actions"><span className="btn btn-light action-button" role="button" onClick={About}>About</span></span>
                     </div>

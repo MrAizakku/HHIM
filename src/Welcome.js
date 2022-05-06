@@ -4,12 +4,12 @@ const Welcome = () => {
     return (
         <div>
             <h1>Welcome!</h1>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
+            <div className="container">
+                <div className="row">
+                    <div className="col">
                         Section 1
                     </div>
-                    <div class="col">
+                    <div className="col">
                         Section 2
                     </div>
                 </div>

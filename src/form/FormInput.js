@@ -13,8 +13,8 @@ export default class FormInput extends React.Component {
     render() {
         return (
             <div className="mb-3 row">
-                <label htmlFor={this.props.title} className="col-sm-2 col-form-label">{this.props.title}</label>
-                <div className="col-sm-10">
+                <label htmlFor={this.props.title} className="col-sm-4 col-form-label">{this.props.title}</label>
+                <div className="col-sm-8">
                 <input 
                     onChange={this.handleChangeData} 
                     onBlur={this.handleChangeData}

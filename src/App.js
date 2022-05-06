@@ -1,5 +1,6 @@
 import React from 'react';
 import dataSource from './dataSource';
+import { ReactSession } from 'react-client-session';
 import { Router, Route, Switch } from 'react-router-dom'; 
 import { createBrowserHistory } from 'history';
 import NavBar from './NavBar';
@@ -10,6 +11,8 @@ import OneHousehold from './household/OneHousehold';
 import NewItem from './item/NewItem';
 import EditItem from './item/EditItem';
 import Welcome from './Welcome';
+import Login from './login/Login';
+import Register from './register/Register';
 
 const history = createBrowserHistory(); 
 
@@ -58,6 +61,7 @@ export default class App extends React.Component {
     }
 
     render() {
+        ReactSession.setStoreType("localStorage");
         return (
             <Router history={history}>
                 <div className="container">
@@ -66,6 +70,14 @@ export default class App extends React.Component {
                         <Route 
                             exact path="/" 
                             component={Welcome} 
+                        />
+                        <Route 
+                            exact path="/login" 
+                            component={Login} 
+                        />
+                        <Route 
+                            exact path="/register" 
+                            component={Register} 
                         />
                         <Route 
                             exact path="/create/household" 
