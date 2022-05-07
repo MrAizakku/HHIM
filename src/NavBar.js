@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { ReactSession } from 'react-client-session';
+import { Container, Navbar, Nav } from "react-bootstrap";
 
 const About = () => { return (alert("Version: 1.0")); }
 
@@ -13,52 +13,43 @@ const Logout = () => {
 
 const LoggedIn = () => (
     <>
-        <li className="nav-item">
-            <Link className="nav-link" to="/create/household">New</Link>
-        </li>
-        <li className="nav-item">
-            <Link className="nav-link" to="/list/households">Households</Link>
-        </li>
-        <Link className="nav-link" role="button" onClick={Logout} to={{ pathname: "/" }}>Logout</Link>
+        <Nav.Link className="nav-link" href="/create/household">New</Nav.Link>
+        <Nav.Link className="nav-link" href="/list/households">Households</Nav.Link>
+        <Nav.Link className="nav-link" role="button" onClick={Logout} href="/">Logout</Nav.Link>
     </>);
 
 const NotLoggedIn = () => (
     <>
-        <li className="nav-item">
-            <Link className="nav-link" to="/login">Login</Link>
-        </li>
-        <li className="nav-item">
-            <Link className="nav-link" to="/register">Register</Link>
-        </li>
+            <Nav.Link 
+                className="nav-link" 
+                href="/login"
+            >Login</Nav.Link>
+            <Nav.Link 
+                className="nav-link" 
+                href="/register"
+            >Register</Nav.Link>
     </>);
 
 const NavBar = () => {
     return (
-        <div>
+        <>
             <div className="text-center bg-dark text-white">
                 <h1> Household Inventory Management System </h1>
             </div>
-            <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <div className="container">
-                        
-                    <Link className="navbar-brand" to={{ pathname: "/" }}>HIMS</Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="nav navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <Link className="nav-link" to={{ pathname: "https://www.gcu.edu/" }} target="_blank">GCU Homepage</Link>
-                            </li>
+            <Navbar bg="light" expand="sm">
+                <Container fluid>
+                    <Navbar.Brand href="/">HIMS
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto my-2 my-lg-0">
                             {ReactSession.get("email")==null ? NotLoggedIn() : LoggedIn() }
-                        </ul>
-                        <span className="navbar-text actions"><span className="btn btn-light action-button" role="button" onClick={About}>About</span></span>
-                    </div>
-                </div>
-                </nav>
-            </div>
-         </div>
+                            <Nav.Link className="nav-link" onClick={About}>About</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+                </Navbar> 
+            </>
     );
 }
 export default NavBar;
