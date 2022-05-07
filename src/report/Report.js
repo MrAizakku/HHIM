@@ -1,5 +1,6 @@
 import React from 'react';
 import dataSource from '../dataSource';
+import Table from 'react-bootstrap/Table'
 
 export default class Report extends React.Component {
     state = {
@@ -35,24 +36,22 @@ export default class Report extends React.Component {
         );
 
         return (
-            <div>
-                <table className="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Item Name</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">State</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Updated</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {items}
-                    </tbody>
-                </table>
-            </div>
+            <Table striped hover responsive="lg" size="sm">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Updated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {items}
+                </tbody>
+            </Table>
         );
     }
 }

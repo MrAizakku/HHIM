@@ -1,4 +1,5 @@
 import React from 'react';
+import Table from 'react-bootstrap/Table'
 import dataSource from '../dataSource';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -63,8 +64,8 @@ export default class ListItems extends React.Component {
                         <td>{item.name}</td>
                         <td>{item.description}</td>
                         <td>{item.quantity}</td>
-                        <td>{item.created_at}</td>
-                        <td>{item.updated_at}</td>
+                        <td>{item.created_at.substring(0,10)}</td>
+                        <td>{item.updated_at.substring(0,10)}</td>
                         <td>
                             {item.donation_flag != null ? this.renderFlag(item.id) : this.renderToggle(item.id) }
                             
@@ -82,7 +83,7 @@ export default class ListItems extends React.Component {
         return (
             <div>
                 <h1>Inventory <Link to={{pathname: "/create/item", state: {householdid: this.props.householdid} }} ><FontAwesomeIcon icon={faPlus} /></Link></h1>
-                <table className="table table-hover">
+                <Table striped hover responsive="lg" size="md">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -99,7 +100,7 @@ export default class ListItems extends React.Component {
                     <tbody>
                         {items}
                     </tbody>
-                </table>
+                </Table>
             </div>
         );
     }
