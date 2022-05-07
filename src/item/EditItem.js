@@ -7,6 +7,7 @@ export default class EditItem extends React.Component {
         id: this.props.item.id,  
         name: this.props.item.name,
         description: this.props.item.description,
+        donation_flag: this.props.item.donation_flag,
         quantity: this.props.item.quantity,
     }
 
@@ -39,6 +40,12 @@ export default class EditItem extends React.Component {
 
     updateQuantity = (t) => {
         this.setState({quantity: t}, () => {
+            console.log("State of form = ", this.state);
+        });
+    }
+
+    updateDonationFlag = (t) => {
+        this.setState({donation_flag: t}, () => {
             console.log("State of form = ", this.state);
         });
     }
@@ -77,6 +84,14 @@ export default class EditItem extends React.Component {
                                 value={this.state.quantity}
                                 placeholder="0"
                                 onChange={this.updateQuantity}
+                            />
+                            <FormInput 
+                                id="itemDonationFlag"
+                                title="Donation?"
+                                type="text"
+                                value={this.state.donation_flag}
+                                placeholder="Blank = No, Y for Donating"
+                                onChange={this.updateDonationFlag}
                             />
                         </div>
                         <button type="button" onClick={this.handleSubmit} className="btn btn-success">Submit</button>

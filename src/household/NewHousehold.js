@@ -1,6 +1,7 @@
 import React from 'react';
 import dataSource from '../dataSource';
 import FormInput from '../form/FormInput';
+import { ReactSession } from 'react-client-session';
 
 export default class NewHousehold extends React.Component {
     state = {
@@ -19,11 +20,14 @@ export default class NewHousehold extends React.Component {
             alert("ERROR: Please fill out the form correctly.");
         } else {
             dataSource.post('/household/', this.state)
-            .then(result => {
-                console.log(result.data);
-                alert(result.data.httpMessage);
-                this.props.history.push("/");
-                this.props.history.go(0);
+            .then(result => {                
+                dataSource.post('/householduser/', {"user_id": ReactSession.get("id"),"household_id": result.data.data.id})
+                .then(result => {
+                    //console.log(result.data);
+                    alert("Success!");
+                    this.props.history.push("/");
+                    this.props.history.go(0);
+                })                
             });
         }
     }

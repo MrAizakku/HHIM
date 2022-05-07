@@ -2,11 +2,19 @@ import React from 'react';
 import dataSource from '../dataSource';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faEdit, faTrash, faFlag } from '@fortawesome/free-solid-svg-icons'
 
 export default class ListItems extends React.Component {
     state = {
         items: this.props.items
+    }
+
+    renderFlag = (id) => {
+        return (<div><FontAwesomeIcon id={id} icon={faFlag} /></div>);
+    }
+
+    renderToggle = (id) => {
+        return (<div></div>);
     }
 
     handleSelect = (e) => {
@@ -58,6 +66,10 @@ export default class ListItems extends React.Component {
                         <td>{item.created_at}</td>
                         <td>{item.updated_at}</td>
                         <td>
+                            {item.donation_flag != null ? this.renderFlag(item.id) : this.renderToggle(item.id) }
+                            
+                        </td>
+                        <td>
                             <div className="nav-link" id={item.id} onClick={this.handleSelect}><FontAwesomeIcon id={item.id} icon={faEdit} /></div>
                         </td>
                         <td>
@@ -79,6 +91,7 @@ export default class ListItems extends React.Component {
                             <th scope="col">Quantity</th>
                             <th scope="col">Created</th>
                             <th scope="col">Updated</th>
+                            <th scope="col">Donation?</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>

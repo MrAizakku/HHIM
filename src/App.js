@@ -20,7 +20,8 @@ export default class App extends React.Component {
     state = {
         households: [],
         item: "",
-        currentlySelectedHouseholdID: -1
+        currentlySelectedHouseholdID: -1,
+        report: []
     }
 
     componentDidMount() {
@@ -28,9 +29,12 @@ export default class App extends React.Component {
     }
 
     loadHouseholds = async () => {
-        const response = await dataSource.get('/households');
-        console.log(response.data.data);
-        this.setState({households: response.data.data});
+        var id = ReactSession.get("id");
+        if(id > 0) {
+            const response = await dataSource.get('/households/'+id);
+            //console.log(response.data.data);
+            this.setState({households: response.data.data});
+        }
     }
 
     selectItem = (id) => {
@@ -66,10 +70,10 @@ export default class App extends React.Component {
             <Router history={history}>
                 <div className="container">
                     <NavBar />
-                    <Switch>
+                    <Switch>    
                         <Route 
                             exact path="/" 
-                            component={Welcome} 
+                            component={Welcome}
                         />
                         <Route 
                             exact path="/login" 

@@ -11,11 +11,13 @@ export default class Login extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        console.log("submitting");
         if(this.state.email === "" || this.state.password === "") {
             alert("ERROR: Please fill out the form correctly.");
         } else {
             dataSource.post('/authenticate/', this.state)
             .then(result => {
+                console.log("2");
                 console.log(result.data);
                 if(result.data === true) {
                     dataSource.get('/user/email/' + this.state.email)
