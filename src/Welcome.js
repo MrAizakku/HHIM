@@ -9,9 +9,12 @@ export default class Welcome extends React.Component {
     render () {
         return (
             <div>
-                <h1>Welcome to the Household Inventory Management system.</h1>
-                <p>Please feel free to review the items below and contact the item owners via the listed email address.</p>
-                <br />
+            <h1>Welcome to the Household Inventory Management system.</h1>
+                <div className="container">
+                    <p>Please feel free to review the items below and contact the item owners via the listed email address.</p>
+                    <p className="text-danger bg-dark">CAUTION: <span className="text-white">Passwords are NOT secure.</span></p>
+                    <br />
+                </div>
                 <h3>Items up for donation:</h3>
                 <div className="container">
                     <div className="row">

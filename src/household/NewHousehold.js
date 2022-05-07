@@ -34,34 +34,38 @@ export default class NewHousehold extends React.Component {
 
     updateName = (t) => {
         this.setState({name: t}, () => {
-            console.log("State of form = ", this.state);
+            console.log("State of form = ", this.state.name);
         });
     }
 
     updateStreet = (t) => {
         this.setState({street: t}, () => {
-            console.log("State of form = ", this.state);
+            console.log("State of form = ", this.state.street);
         });
     }
     updateCity = (t) => {
         this.setState({city: t}, () => {
-            console.log("State of form = ", this.state);
+            console.log("State of form = ", this.state.city);
         });
     }
     updateState = (t) => {
-        this.setState({state: t}, () => {
-            console.log("State of form = ", this.state);
+        if(t.length > 2)
+            t = t.substring(0,2);
+        this.setState({state: t}, () => {            
+            console.log("State of form = ", this.state.state);
         });
     }
     updateZip = (t) => {
+        if(t.length > 5)
+            t = t.substring(0,5);
         this.setState({zip: t}, () => {
-            console.log("State of form = ", this.state);
+            console.log("State of form = ", this.state.zip);
         });
     }
 
     updateDescripion = (t) => {
         this.setState({description: t}, () => {
-            console.log("State of form = ", this.state);
+            console.log("State of form = ", this.state.description);
         });
     }
     
@@ -101,7 +105,7 @@ export default class NewHousehold extends React.Component {
                                 id="householdState"
                                 title="State"
                                 type="text"
-                                placeholder="State"
+                                placeholder="State Eg: AZ, TX, NY"
                                 onChange={this.updateState}
                             />
                             <FormInput 

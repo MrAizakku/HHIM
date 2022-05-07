@@ -35,7 +35,7 @@ const NotLoggedIn = () => (
 const NavBar = () => {
     return (
         <div>
-            <div className="text-center">
+            <div className="text-center bg-dark text-white">
                 <h1> Household Inventory Management System </h1>
             </div>
             <div>

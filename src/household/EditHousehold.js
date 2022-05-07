@@ -46,11 +46,15 @@ export default class EditHousehold extends React.Component {
         });
     }
     updateState = (t) => {
+        if(t.length > 2)
+            t = t.substring(0,2);
         this.setState({state: t}, () => {
             console.log("State of form = ", this.state);
         });
     }
     updateZip = (t) => {
+        if(t.length > 5)
+            t = t.substring(0,5);
         this.setState({zip: t}, () => {
             console.log("State of form = ", this.state);
         });
