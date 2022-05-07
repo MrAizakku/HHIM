@@ -18,7 +18,7 @@ export default class EditItem extends React.Component {
         } else {
             dataSource.put('/item/', this.state)
             .then(result => {
-                console.log(result.data);
+                //console.log(result.data);
                 alert(result.data.httpMessage);
                 this.props.history.push("/");
                 this.props.history.go(0);
@@ -27,27 +27,19 @@ export default class EditItem extends React.Component {
     }
 
     updateName = (t) => {
-        this.setState({name: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({name: t});
     }
 
     updateDescripion = (t) => {
-        this.setState({description: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({description: t});
     }
 
     updateQuantity = (t) => {
-        this.setState({quantity: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({quantity: t});
     }
 
     updateDonationFlag = (t) => {
-        this.setState({donation_flag: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({donation_flag: t});
     }
     
     handleCancel = (e) => {

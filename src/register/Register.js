@@ -17,7 +17,7 @@ export default class Register extends React.Component {
         } else {
             dataSource.post('/user/', this.state)
             .then(result => {
-                console.log(result.data);
+                //console.log(result.data);
                 alert(result.data.httpMessage);
                 this.props.history.push("/");
                 this.props.history.go(0);
@@ -26,27 +26,19 @@ export default class Register extends React.Component {
     }
 
     updateFirstName = (t) => {
-        this.setState({first_name: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({first_name: t});
     }
 
     updateLastName = (t) => {
-        this.setState({last_name: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({last_name: t});
     }
 
     updateEmail = (t) => {
-        this.setState({email: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({email: t});
     }
 
     updatePassword = (t) => {
-        this.setState({password: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({password: t});
     }
     
     handleCancel = (e) => {

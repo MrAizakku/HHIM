@@ -21,7 +21,7 @@ export default class EditHousehold extends React.Component {
         } else {
             dataSource.put('/household/', this.state)
             .then(result => {
-                console.log(result.data);
+                //console.log(result.data);
                 alert(result.data.httpMessage);
                 this.props.history.push("/");
                 this.props.history.go(0);
@@ -30,40 +30,28 @@ export default class EditHousehold extends React.Component {
     }
 
     updateName = (t) => {
-        this.setState({name: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({name: t});
     }
 
     updateStreet = (t) => {
-        this.setState({street: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({street: t});
     }
     updateCity = (t) => {
-        this.setState({city: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({city: t});
     }
     updateState = (t) => {
         if(t.length > 2)
             t = t.substring(0,2);
-        this.setState({state: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({state: t});
     }
     updateZip = (t) => {
         if(t.length > 5)
             t = t.substring(0,5);
-        this.setState({zip: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({zip: t});
     }
 
     updateDescripion = (t) => {
-        this.setState({description: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({description: t});
     }
     
     handleCancel = (e) => {

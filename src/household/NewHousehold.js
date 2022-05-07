@@ -33,40 +33,30 @@ export default class NewHousehold extends React.Component {
     }
 
     updateName = (t) => {
-        this.setState({name: t}, () => {
-            console.log("State of form = ", this.state.name);
-        });
+        this.setState({name: t});
     }
 
     updateStreet = (t) => {
-        this.setState({street: t}, () => {
-            console.log("State of form = ", this.state.street);
-        });
+        this.setState({street: t});
     }
     updateCity = (t) => {
-        this.setState({city: t}, () => {
-            console.log("State of form = ", this.state.city);
-        });
+        this.setState({city: t});
     }
     updateState = (t) => {
         if(t.length > 2)
             t = t.substring(0,2);
-        this.setState({state: t}, () => {            
-            console.log("State of form = ", this.state.state);
-        });
+        this.setState({state: t});
     }
     updateZip = (t) => {
         if(t.length > 5)
             t = t.substring(0,5);
-        this.setState({zip: t}, () => {
-            console.log("State of form = ", this.state.zip);
-        });
+        this.setState({zip: t});
     }
 
     updateDescripion = (t) => {
-        this.setState({description: t}, () => {
-            console.log("State of form = ", this.state.description);
-        });
+        this.setState({description: t});//, () => {
+            //console.log("State of form = ", this.state.description);
+        //});
     }
     
     handleCancel = (e) => {

@@ -53,8 +53,8 @@ export default class ListItems extends React.Component {
     }
 
     render() {
-        console.log(this.props);
-        console.log("ListItems=", this.props.items);
+        //console.log(this.props);
+        //console.log("ListItems=", this.props.items);
         const items = this.state.items.map(
             (item) => {
                 return (                    

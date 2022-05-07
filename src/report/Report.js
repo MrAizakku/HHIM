@@ -28,7 +28,7 @@ export default class Report extends React.Component {
                         <td>{item.quantity}</td>
                         <td>{item.state}</td>
                         <td>{item.email}</td>
-                        <td>{item.updated_at}</td>
+                        <td>{item.updated_at.substring(0,10)}</td>
                     </tr>
                 );
             }

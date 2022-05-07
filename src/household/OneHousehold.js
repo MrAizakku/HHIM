@@ -19,7 +19,7 @@ export default class OneHousehold extends React.Component {
         if(confirm('Are you sure you want to delete?')) {
             dataSource.delete('/household/'+this.props.household.id)
             .then(result => {
-                console.log(result);
+                //console.log(result);
                 alert(result.data.httpMessage);
                 this.props.history.push("/");
                 this.props.history.go(0);

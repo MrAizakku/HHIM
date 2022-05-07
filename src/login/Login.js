@@ -17,19 +17,17 @@ export default class Login extends React.Component {
         } else {
             dataSource.post('/authenticate/', this.state)
             .then(result => {
-                console.log("2");
-                console.log(result.data);
+                //console.log(result.data);
                 if(result.data === true) {
                     dataSource.get('/user/email/' + this.state.email)
                     .then(result => {
-                        console.log(ReactSession.get("email"));
                         ReactSession.set("email", result.data.data[0].email);
                         ReactSession.set("id", result.data.data[0].id);
                         ReactSession.set("first_name", result.data.data[0].first_name);
-                        console.log(ReactSession.get("email"));
+                        //console.log(ReactSession.get("email"));
                         
                         alert("Welcome back " + result.data.data[0].first_name);
-                        console.log(result);
+                        //console.log(result);
                         this.props.history.push("/");
                         this.props.history.go(0);
                     })
@@ -43,15 +41,11 @@ export default class Login extends React.Component {
     }
 
     updateEmail = (t) => {
-        this.setState({email: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({email: t});
     }
 
     updatePassword = (t) => {
-        this.setState({password: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({password: t});
     }
     
     handleCancel = (e) => {

@@ -17,7 +17,7 @@ export default class NewItem extends React.Component {
         } else {
             dataSource.post('/item', this.state)
             .then(result => {
-                console.log(result.data);
+                //console.log(result.data);
                 alert(result.data.httpMessage);
                 this.props.history.go(0);
             });
@@ -25,21 +25,15 @@ export default class NewItem extends React.Component {
     }
 
     updateName = (t) => {
-        this.setState({name: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({name: t});
     }
 
     updateDescripion = (t) => {
-        this.setState({description: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({description: t});
     }
 
     updateQuantity = (t) => {
-        this.setState({quantity: t}, () => {
-            console.log("State of form = ", this.state);
-        });
+        this.setState({quantity: t});
     }
     
     handleCancel = (e) => {
