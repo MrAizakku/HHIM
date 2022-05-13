@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import dataSource from '../dataSource';
 import FormInput from '../form/FormInput';
 
@@ -26,19 +27,19 @@ export default class Register extends React.Component {
     }
 
     updateFirstName = (t) => {
-        this.setState({first_name: t});
+        this.setState({first_name: t.target.value});
     }
 
     updateLastName = (t) => {
-        this.setState({last_name: t});
+        this.setState({last_name: t.target.value});
     }
 
     updateEmail = (t) => {
-        this.setState({email: t});
+        this.setState({email: t.target.value});
     }
 
     updatePassword = (t) => {
-        this.setState({password: t});
+        this.setState({password: t.target.value});
     }
     
     handleCancel = (e) => {
@@ -47,44 +48,53 @@ export default class Register extends React.Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="col mx-auto w-50">
-                    <form>
-                        <div className="form-group">
-                            <h3>Register:</h3>
-                            <FormInput 
-                                id="first_name"
-                                title="First Name"
-                                type="text"
-                                placeholder="John"
-                                onChange={this.updateFirstName}
-                            />
-                            <FormInput 
-                                id="last_name"
-                                title="Last Name"
-                                type="text"
-                                placeholder="Smith"
-                                onChange={this.updateLastName}
-                            />
-                            <FormInput 
-                                id="email"
-                                title="Email"
-                                type="email"
-                                placeholder="me@email.com"
-                                onChange={this.updateEmail}
-                            />
-                            <FormInput 
-                                id="password"
-                                title="Password"
-                                type="password"
-                                placeholder="****"
-                                onChange={this.updatePassword}
-                            />
-                        </div>
-                        <button type="button" onClick={this.handleSubmit} className="btn btn-success">Submit</button>
-                    </form>
-                </div>
-            </div>
+            <Container>
+                <Row className="justify-content-md-center">
+                    <Col lg={6}>
+                        <h3 className="my-3">Register:</h3>
+                        <Form onSubmit={this.handleSubmit}>
+                            <Form.Group className="mb-3" controlId="first_name">
+                                <Form.Label>First Name</Form.Label>
+                                <Form.Control 
+                                    type="text" 
+                                    placeholder="Enter First Name" 
+                                    onChange={this.updateFirstName}
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="last_name">
+                                <Form.Label>Last Name</Form.Label>
+                                <Form.Control 
+                                    type="text" 
+                                    placeholder="Enter Last Name" 
+                                    onChange={this.updateLastName}
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="email">
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control 
+                                    type="email" 
+                                    placeholder="Enter Email Address" 
+                                    onChange={this.updateEmail}
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="password">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control 
+                                    type="password" 
+                                    placeholder="Enter Password" 
+                                    onChange={this.updatePassword}
+                                />
+                            </Form.Group>
+                            <Button variant="success" type="submit">
+                                Submit
+                            </Button>
+                        </Form>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 }

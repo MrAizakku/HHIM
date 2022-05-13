@@ -2,6 +2,7 @@ import React from 'react';
 import dataSource from '../dataSource';
 import FormInput from '../form/FormInput';
 import { ReactSession } from 'react-client-session';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 
 export default class Login extends React.Component {
     state = {
@@ -41,11 +42,11 @@ export default class Login extends React.Component {
     }
 
     updateEmail = (t) => {
-        this.setState({email: t});
+        this.setState({email: t.target.value});
     }
 
     updatePassword = (t) => {
-        this.setState({password: t});
+        this.setState({password: t.target.value});
     }
     
     handleCancel = (e) => {
@@ -54,30 +55,35 @@ export default class Login extends React.Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="col mx-auto w-50">
-                    <form>
-                        <div className="form-group">
-                            <h3>Login:</h3>
-                            <FormInput 
-                                id="email"
-                                title="Email"
-                                type="email"
-                                placeholder="me@email.com"
-                                onChange={this.updateEmail}
-                            />
-                            <FormInput 
-                                id="password"
-                                title="Password"
-                                type="password"
-                                placeholder="****"
-                                onChange={this.updatePassword}
-                            />
-                        </div>
-                        <button type="button" onClick={this.handleSubmit} className="btn btn-success">Submit</button>
-                    </form>
-                </div>
-            </div>
+            <Container>
+                <Row className="justify-content-md-center">
+                    <Col lg={6}>
+                        <h3 className="my-3">Login:</h3>
+                        <Form onSubmit={this.handleSubmit}>
+                            <Form.Group className="mb-3" controlId="email">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control
+                                    type="email" 
+                                    placeholder="Enter email" 
+                                    onChange={this.updateEmail}
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="password">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control 
+                                    type="password" 
+                                    placeholder="Password" 
+                                    onChange={this.updatePassword}
+                                />
+                            </Form.Group>
+                            <Button variant="success" type="submit">
+                                Submit
+                            </Button>
+                        </Form>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 }
