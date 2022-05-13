@@ -2,7 +2,7 @@ import React from 'react';
 
 //PROPS: value, id, title, placeholder, onChange
 export default class FormInput extends React.Component {
-    state = { inputData: this.props.value };
+    state = { inputData: this.props.value || '' };
 
     handleChangeData = (e) => {
         this.setState({inputData: e.target.value}, () => {

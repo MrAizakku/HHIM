@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faEdit, faList } from '@fortawesome/free-solid-svg-icons'
 import ListItems from '../item/ListItems';
+import ShareHousehold from './ShareHousehold';
 import Card from 'react-bootstrap/Card'
 
 export default class OneHousehold extends React.Component {
@@ -36,6 +37,11 @@ export default class OneHousehold extends React.Component {
         //console.log("one", this.props);
         return (
             <>
+            <br />
+            <ShareHousehold 
+                id={this.props.id}
+            />
+            <br />
             <Card className="text-center">
                 <Card.Header>
                     <ul className="nav nav-pills card-header-pills">

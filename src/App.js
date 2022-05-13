@@ -104,7 +104,8 @@ export default class App extends React.Component {
                         <Route exact path="/show/:id" 
                             render={ () => { 
                                 return (
-                                    <OneHousehold 
+                                    <OneHousehold
+                                        id={this.state.households[this.state.currentlySelectedHouseholdID].id} 
                                         history={history} 
                                         household={this.state.households[this.state.currentlySelectedHouseholdID]} 
                                         onItemSelect={this.selectItem}
