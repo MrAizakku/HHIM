@@ -2,6 +2,10 @@
 
 This is a simple ReactJS Front-End for the purpose of communicating with a ExpressJS Back-end. Together these two items make up the Household Inventory Management system. This application was completed for the purpose of CST-452 at Grand Canyon University and is made by Isaac Tucker.
 
+## Documentation
+
+In the folder 'Artifacts' you can locate the project proposal, technical requirements, architecture design, and requirement review documents. Additionally the REST documentation of the API endpoints is also included within a zip file.
+
 ## Available Scripts
 
 In the project directory, you can run:
